@@ -40,12 +40,12 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 
 // Get All Product
 exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
-  const resultPerPage = 8;
+  const resultPerPage = 12;
   const productsCount = await Product.countDocuments();
-
   const apiFeature = new ApiFeatures(Product.find(), req.query)
     .search()
-    .filter();
+    .filter()
+    .pagination(resultPerPage);
 
   let products = await apiFeature.query;
 
@@ -64,6 +64,78 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+//Get Featured Products
+exports.getFeaturedProduct = catchAsyncErrors(async (req, res, next) => {
+  const featuredProductIds = [
+    "6482fc2f492bc13eac00525f",
+    "6482ff0e0cc1a62984e483e3",
+    "64830ed30f685636d4f38e14",
+    "64833d624d07292a1840059f",
+  ];
+  const products = [];
+  for (i = 0; i < 4; i++) {
+    const product = await Product.findById(featuredProductIds[i]);
+    if (!product) {
+      return next(new ErrorHander("Product not found", 404));
+    }
+    products.push(product);
+  }
+  res.status(200).json({
+    success: true,
+    products,
+  });
+});
+
+//Get Lithium battery for Homepage.
+exports.getLithiumBattery = catchAsyncErrors(async (req, res, next) => {
+  const products = await Product.find({
+    category: "Li-phosphate Battery",
+  }).limit(4);
+
+  res.status(200).json({
+    success: true,
+    products,
+  });
+});
+
+//Get solar panel for Homepage.
+exports.getSolarpanel = catchAsyncErrors(async (req, res, next) => {
+  const products = await Product.find({ category: "Solar Panel" }).limit(4);
+
+  res.status(200).json({
+    success: true,
+    products,
+  });
+});
+
+//Get solar Inverter for Homepage.
+exports.getSolarInverter = catchAsyncErrors(async (req, res, next) => {
+  const products = await Product.find({ category: "Solar Inverter" }).limit(4);
+
+  res.status(200).json({
+    success: true,
+    products,
+  });
+});
+//Get Ongrid system for Homepage.
+exports.getOffgridSolarSystem = catchAsyncErrors(async (req, res, next) => {
+  const products = await Product.find({ category: "Offgrid System" }).limit(4);
+
+  res.status(200).json({
+    success: true,
+    products,
+  });
+});
+//Get offgrid system  for Homepage.
+exports.getOngridSolarSystem = catchAsyncErrors(async (req, res, next) => {
+  const products = await Product.find({ category: "Ongrid System" }).limit(4);
+
+  res.status(200).json({
+    success: true,
+    products,
+  });
+});
+
 // Get All Product (Admin)
 exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
   const products = await Product.find();
@@ -77,11 +149,9 @@ exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
 // Get Product Details
 exports.getProductDetails = catchAsyncErrors(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
-
   if (!product) {
     return next(new ErrorHander("Product not found", 404));
   }
-
   res.status(200).json({
     success: true,
     product,

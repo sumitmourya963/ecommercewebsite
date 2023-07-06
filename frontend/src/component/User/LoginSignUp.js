@@ -1,7 +1,7 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
 import "./LoginSignUp.css";
 import Loader from "../layout/Loader/Loader";
-import { Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import FaceIcon from "@material-ui/icons/Face";
@@ -10,11 +10,12 @@ import { clearErrors, login, register } from "../../actions/userAction.js";
 import { useAlert } from "react-alert";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import MetaData from "../layout/MetaData";
 
-const LoginSignUp = ({ history }) => {
+const LoginSignUp = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
-  const location = useLocation();
+
   const navigate = useNavigate();
 
   const { error, loading, isAuthenticated } = useSelector(
@@ -73,7 +74,6 @@ const LoginSignUp = ({ history }) => {
     }
   };
 
-  const redirect = location.search ? location.search.split("=")[1] : "/account";
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -81,9 +81,9 @@ const LoginSignUp = ({ history }) => {
     }
 
     if (isAuthenticated) {
-      navigate(redirect);
+      window.history.back();
     }
-  }, [dispatch, error, alert, history, isAuthenticated, navigate]);
+  }, [dispatch, error, alert, isAuthenticated, location, navigate, history]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {
@@ -108,6 +108,7 @@ const LoginSignUp = ({ history }) => {
         <Loader />
       ) : (
         <Fragment>
+          <MetaData title={`login ---LiVolt`} />
           <div className="LoginSignUpContainer">
             <div className="LoginSignUpBox">
               <div>

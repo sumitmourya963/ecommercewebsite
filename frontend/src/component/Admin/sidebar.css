@@ -11,10 +11,12 @@
 .sidebar > a > img {
   width: 100%;
   transition: all 0.5s;
+  margin-bottom: -75px;
+  margin-left: -22px;
 }
 
 .sidebar > a > img:hover {
-  filter: drop-shadow(0 0 10px tomato);
+  filter: drop-shadow(0 0 10px rgb(8, 184, 90));
 }
 .sidebar a {
   text-decoration: none;
@@ -24,7 +26,7 @@
   transition: all 0.5s;
 }
 .sidebar a:hover {
-  color: tomato;
+  color: rgb(8, 184, 90);
   transform: scale(1.1);
 }
 

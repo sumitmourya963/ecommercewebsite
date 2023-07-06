@@ -14,6 +14,7 @@
   padding: 0 5vmax;
   justify-content: center;
   min-height: 30vh;
+  margin-left: 5%;
 }
 
 .paginationBox {
@@ -22,14 +23,13 @@
   margin: 6vmax;
 }
 
-.paginationBox > ul{
+.paginationBox > ul {
   display: flex;
   justify-content: center;
   padding: 0;
 }
 
-.paginationBox > ul > li{
-  background-color: rgb(255, 255, 255);
+.paginationBox > ul > li {
   list-style: none;
   border: 1px solid rgba(0, 0, 0, 0.178);
   padding: 1vmax 1.5vmax;
@@ -59,7 +59,7 @@
 }
 
 .pageItemActive {
-  background-color: tomato;
+  background-color: rgb(8, 184, 90);
 }
 
 .pageLinkActive {
@@ -86,7 +86,7 @@
   transition: all 0.5s;
 }
 .category-link:hover {
-  color: tomato;
+  color: rgb(8, 184, 90);
 }
 
 .filterBox > fieldset {

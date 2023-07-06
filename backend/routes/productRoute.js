@@ -9,6 +9,12 @@ const {
   getProductReviews,
   deleteReview,
   getAdminProducts,
+  getSolarpanel,
+  getLithiumBattery,
+  getSolarInverter,
+  getOffgridSolarSystem,
+  getOngridSolarSystem,
+  getFeaturedProduct,
 } = require("../controllers/productController");
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 
@@ -37,5 +43,15 @@ router
   .route("/reviews")
   .get(getProductReviews)
   .delete(isAuthenticatedUser, deleteReview);
+
+//Homepage Featured Products routes
+router.route("/solar-panel").get(getSolarpanel);
+router.route("/lithium-battery").get(getLithiumBattery);
+router.route("/solar-inverter").get(getSolarInverter);
+router.route("/offgrid-system").get(getOffgridSolarSystem);
+router.route("/ongrid-system").get(getOngridSolarSystem);
+
+//Homepage Featured Product Get routes
+router.route("/featuredProducts").get(getFeaturedProduct);
 
 module.exports = router;

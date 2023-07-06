@@ -29,11 +29,14 @@ import {
   DELETE_REVIEW_SUCCESS,
   DELETE_REVIEW_FAIL,
   CLEAR_ERRORS,
+  FEATURED_PRODUCT_REQUEST,
+  FEATURED_PRODUCT_FAIL,
+  FEATURED_PRODUCT_SUCCESS,
 } from "../constants/productConstants";
 
 // Get All Products
 export const getProduct =
-  (keyword = "", currentPage = 1, price = [0, 25000], category, ratings = 0) =>
+  (keyword = "", currentPage = 1, price = [0, 500000], category, ratings = 0) =>
   async (dispatch) => {
     try {
       dispatch({ type: ALL_PRODUCT_REQUEST });
@@ -83,7 +86,10 @@ export const createProduct = (productData) => async (dispatch) => {
     dispatch({ type: NEW_PRODUCT_REQUEST });
 
     const config = {
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Accept: "application/json",
+      },
     };
 
     const { data } = await axios.post(
@@ -164,6 +170,23 @@ export const getProductDetails = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_DETAILS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// Get all featured product
+export const getFeaturedProduct = () => async (dispatch) => {
+  try {
+    dispatch({ type: FEATURED_PRODUCT_REQUEST });
+    const { data } = await axios.get(`/api/v1/featuredProducts`);
+    dispatch({
+      type: FEATURED_PRODUCT_SUCCESS,
+      payload: data.products,
+    });
+  } catch (error) {
+    dispatch({
+      type: FEATURED_PRODUCT_FAIL,
       payload: error.response.data.message,
     });
   }

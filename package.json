@@ -1,7 +1,7 @@
 {
-  "name": "ecommerce",
+  "name": "",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is ecommerce website to sell solar panel and lithium ion batteries.",
   "main": "backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -21,7 +21,11 @@
     "express-fileupload": "^1.2.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.5",
+    "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.6.3",
+    "passport": "^0.6.0",
+    "passport-google-oauth": "^2.0.0",
+    "raw-body": "^2.5.2",
     "stripe": "^8.174.0",
     "validator": "^13.6.0"
   }

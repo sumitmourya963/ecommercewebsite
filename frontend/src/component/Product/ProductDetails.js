@@ -29,6 +29,7 @@ const ProductDetails = () => {
   const params = useParams();
 
   const { id } = params;
+
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
@@ -100,6 +101,7 @@ const ProductDetails = () => {
       alert.success("Review Submitted Successfully");
       dispatch({ type: NEW_REVIEW_RESET });
     }
+
     dispatch(getProductDetails(id));
   }, [dispatch, id, error, alert, reviewError, success]);
 

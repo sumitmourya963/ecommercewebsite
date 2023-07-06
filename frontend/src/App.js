@@ -1,12 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import Header from "./component/layout/Header/Header.js";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React from "react";
 import WebFont from "webfontloader";
 import Footer from "./component/layout/Footer/Footer";
@@ -85,10 +80,12 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/product/:id" element={<ProductDetails />} />
         <Route exact path="/products" element={<Products />} />
-        <Route path="/products:keyword" element={<Products />} />
+        <Route path="/products/:keyword" element={<Products />} />
+        <Route exact path="/products/:HomeCategory" element={<Products />} />
         <Route exact path="/search" element={<Search />} />
         <Route exact path="/login" element={<LoginSignUp />} />
         <Route exact path="/password/forgot" element={<ForgotPassword />} />
+
         <Route
           exact
           path="/password/reset/:token"
@@ -104,7 +101,7 @@ function App() {
             )
           }
         />
-        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+        <Route element={<ProtectedRoute />}>
           <Route exact path="/account" element={<Profile />} />
           <Route exact path="/me/update" element={<UpdateProfile />} />
           <Route exact path="/password/update" element={<UpdatePassword />} />
@@ -114,18 +111,18 @@ function App() {
           <Route exact path="/orders" element={<MyOrders />} />
           <Route exact path="/order/:id" element={<OrderDetails />} />
         </Route>
-        {/* <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}> */}
-
-        <Route exact path="/admin/dashboard" element={<Dashboard />} />
-        <Route exact path="/admin/products" element={<ProductList />} />
-        <Route exact path="/admin/product" element={<NewProduct />} />
-        <Route exact path="/admin/orders" element={<OrderList />} />
-        <Route exact path="/admin/users" element={<UsersList />} />
-        <Route exact path="/admin/reviews" element={<ProductReviews />} />
-        <Route exact path="/admin/user/:id" element={<UpdateUser />} />
-        <Route exact path="/admin/order/:id" element={<ProcessOrder />} />
-        <Route exact path="/admin/product/:id" element={<UpdateProduct />} />
-        {/* </Route> */}
+        <Route element={<ProtectedRoute isAdmin="true" />}>
+          <Route exact path="/admin/dashboard" element={<Dashboard />} />
+          <Route exact path="/admin/products" element={<ProductList />} />
+          <Route exact path="/admin/product" element={<NewProduct />} />
+          <Route exact path="/admin/orders" element={<OrderList />} />
+          <Route exact path="/admin/users" element={<UsersList />} />
+          <Route exact path="/admin/reviews" element={<ProductReviews />} />
+          <Route exact path="/admin/user/:id" element={<UpdateUser />} />
+          <Route exact path="/admin/order/:id" element={<ProcessOrder />} />
+          <Route exact path="/admin/product/:id" element={<UpdateProduct />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>

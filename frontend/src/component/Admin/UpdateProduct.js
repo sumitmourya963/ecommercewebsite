@@ -15,10 +15,13 @@ import SpellcheckIcon from "@material-ui/icons/Spellcheck";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import SideBar from "./Sidebar";
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
+import { useNavigate, useParams } from "react-router-dom";
 
-const UpdateProduct = ({ history, match }) => {
+const UpdateProduct = ({ match }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
+  const navigate = useNavigate();
+  const params = useParams();
 
   const { error, product } = useSelector((state) => state.productDetails);
 
@@ -38,16 +41,19 @@ const UpdateProduct = ({ history, match }) => {
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = [
-    "Laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
+    "Li-ion Battery",
+    "Li-phosphate Battery",
+    "Solar Panel",
+    "Solar Inverter",
+    "Hybrid Inverter",
+    "Solar Stand",
+    "Solar Wire",
+    "Charge Controller",
+    "Ongrid System",
+    "Offgrid System",
   ];
 
-  const productId = match.params.id;
+  const productId = params.id;
 
   useEffect(() => {
     if (product && product._id !== productId) {
@@ -72,19 +78,10 @@ const UpdateProduct = ({ history, match }) => {
 
     if (isUpdated) {
       alert.success("Product Updated Successfully");
-      history.push("/admin/products");
+      navigate("/admin/products");
       dispatch({ type: UPDATE_PRODUCT_RESET });
     }
-  }, [
-    dispatch,
-    alert,
-    error,
-    history,
-    isUpdated,
-    productId,
-    product,
-    updateError,
-  ]);
+  }, [dispatch, alert, error, isUpdated, productId, product, updateError]);
 
   const updateProductSubmitHandler = (e) => {
     e.preventDefault();

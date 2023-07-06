@@ -2,6 +2,9 @@ import {
   ALL_PRODUCT_FAIL,
   ALL_PRODUCT_REQUEST,
   ALL_PRODUCT_SUCCESS,
+  FEATURED_PRODUCT_REQUEST,
+  FEATURED_PRODUCT_SUCCESS,
+  FEATURED_PRODUCT_FAIL,
   ADMIN_PRODUCT_REQUEST,
   ADMIN_PRODUCT_SUCCESS,
   ADMIN_PRODUCT_FAIL,
@@ -48,7 +51,7 @@ export const productsReducer = (state = { products: [] }, action) => {
         products: action.payload.products,
         productsCount: action.payload.productsCount,
         resultPerPage: action.payload.resultPerPage,
-        filteredProductsCount: action.payload.filteredProductsCount,
+        filteredProductCount: action.payload.filteredProductsCount,
       };
 
     case ADMIN_PRODUCT_SUCCESS:
@@ -157,16 +160,20 @@ export const productReducer = (state = {}, action) => {
 
 export const productDetailsReducer = (state = { product: {} }, action) => {
   switch (action.type) {
-    case PRODUCT_DETAILS_REQUEST:
+    case PRODUCT_DETAILS_REQUEST: {
       return {
         loading: true,
         ...state,
       };
-    case PRODUCT_DETAILS_SUCCESS:
+    }
+
+    case PRODUCT_DETAILS_SUCCESS: {
       return {
         loading: false,
         product: action.payload,
       };
+    }
+
     case PRODUCT_DETAILS_FAIL:
       return {
         loading: false,
@@ -180,6 +187,38 @@ export const productDetailsReducer = (state = { product: {} }, action) => {
       };
     default:
       return state;
+  }
+};
+
+export const featuredProductReducers = (state = { products: [] }, action) => {
+  switch (action.type) {
+    case FEATURED_PRODUCT_REQUEST: {
+      return {
+        loading: true,
+        ...state,
+      };
+    }
+    case FEATURED_PRODUCT_SUCCESS: {
+      return {
+        loading: false,
+        products: action.payload,
+      };
+    }
+
+    case FEATURED_PRODUCT_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+    default: {
+      return state;
+    }
   }
 };
 

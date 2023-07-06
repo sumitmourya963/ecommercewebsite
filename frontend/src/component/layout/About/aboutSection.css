@@ -1,124 +1,153 @@
-.aboutSection {
-  height: 100vh;
-  width: 100vw;
-  max-width: 100%;
-  background-color: white;
-  display: grid;
-  grid-template-columns: 4fr 4fr;
-  position: fixed;
-}
-
-.aboutSectionGradient {
-  background-image: linear-gradient(
-    to bottom right,
-    rgb(78, 81, 255),
-    rgb(74, 137, 189)
-  );
-}
-
-.aboutSectionContainer {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  background-color: rgb(255, 255, 255);
-  width: 80vw;
-  height: 80vh;
-  transform: translateX(-50%) translateY(-50%);
-  box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.192);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.aboutSectionContainer > h1 {
-  font: 400 3vmax "Roboto";
-  color: tomato;
-  margin: 2vmax;
-}
-
-.aboutSectionContainer > div {
-  display: flex;
-  width: 100%;
-}
-
-.aboutSectionContainer > div > div {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2vmax;
-  box-sizing: border-box;
-}
-
-.aboutSectionContainer > div > div > p {
-  color: rgba(0, 0, 0, 0.623);
-  font: 100 1vmax "Roboto";
-}
-
-.aboutSectionContainer > div > div > button {
-  margin: 1vmax 0;
-}
-
-.aboutSectionContainer > div > div > span {
-  font: 100 1vmax "Roboto";
-  color: rgba(0, 0, 0, 0.616);
+.about {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2rem;
+  color: rgb(84, 84, 84);
   text-align: center;
-  width: 80%;
+  margin: 50px 100px;
+}
+.about-para {
+  color: grey;
+  display: flex;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: justify;
+  margin: 0 100px 50px 100px;
+  font-size: 1.2rem;
+}
+.about-banner {
+  background-image: url("../../../images/light_bulb.jpg");
+  background-repeat: no-repeat;
+
+  background-position-y: center;
+  width: 100%;
+  height: 30vh;
+}
+.header-container {
+  display: flex;
+}
+.header-container > img {
+  width: 600px;
+  height: 350px;
+  margin-right: 100px;
+  margin-bottom: 100px;
+}
+.header-container1 {
+  display: flex;
+}
+.header-container1 > img {
+  width: 600px;
+  height: 350px;
+
+  display: flex;
+  margin-bottom: 100px;
+}
+.header-vision {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2rem;
+  color: rgb(84, 84, 84);
+  text-align: left;
+  display: flexbox;
+  margin: 0 100px;
+}
+/* our values */
+.value-para-header {
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.3rem;
+  color: grey;
+  text-decoration-line: underline;
+  margin-left: 8%;
 }
 
-.aboutSectionContainer2 {
-  border-left: 1px solid rgba(0, 0, 0, 0.116);
+/* Our mission */
+
+.our-mission-container > img {
+  width: 600px;
+  height: 350px;
+
+  margin-bottom: 100px;
+}
+.our-mission-header {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2rem;
+  color: rgb(84, 84, 84);
+  text-align: left;
+  display: flex;
+  margin: 50px 100px;
+}
+.reverse {
+  flex-direction: row-reverse;
+}
+.our-mission-container > p,
+.our-commitment-para {
+  color: grey;
+  display: flex;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: justify;
+  margin: 50px 100px;
+  font-size: 1.2rem;
 }
 
-.aboutSectionContainer2 > h2 {
-  color: rgba(0, 0, 0, 0.623);
-  font: 100 2vmax "Roboto";
-  margin: 2vmax;
-}
-
-.aboutSectionContainer2 > a > svg {
-  font-size: 4vmax;
-}
-
-.youtubeSvgIcon {
-  color: tomato;
-}
-
-.instagramSvgIcon {
-  color: rgb(144, 81, 202);
+.our-commitment-para {
+  margin: 20px 100px;
 }
 
 @media screen and (max-width: 600px) {
-  .aboutSectionContainer > div {
-    display: block;
+  .header-container {
+    flex-direction: column-reverse;
+    font-weight: 400;
+    margin: 10px;
   }
-
-  .aboutSectionContainer > h1 {
-    font: 400 5vmax "Roboto";
-    margin: 3vmax;
+  .about-para {
+    margin: 15px;
+    font-size: 1rem;
   }
-
-  .aboutSectionContainer > div > div > p {
-    font: 100 2vmax "Roboto";
+  .header-container1 {
+    display: flex;
+    flex-direction: column;
   }
-
-  .aboutSectionContainer > div > div > span {
-    font: 100 1.4vmax "Roboto";
-    width: 70%;
+  .header-container > img {
+    width: 340px;
+    height: 220px;
+    margin: 15px;
   }
-
-  .aboutSectionContainer2 {
-    border-left: none;
+  .header-container1 > img {
+    width: 340px;
+    height: 220px;
+    margin: 25px;
   }
-
-  .aboutSectionContainer2 > h2 {
-    font: 100 3vmax "Roboto";
-    margin: 2vmax;
+  .header-container1 > div > p {
+    margin: 10px 25px;
+    font-size: 1rem;
   }
-
-  .aboutSectionContainer2 > a > svg {
-    font-size: 6vmax;
-    margin: 1vmax;
+  .header-vision {
+    font-size: 1.3rem;
+    margin: 20px auto;
+  }
+  .our-mission-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .about,
+  .our-values {
+    font-size: 1.3rem;
+    margin: 20px auto;
+  }
+  .our-mission-header {
+    font-size: 1.3rem;
+    margin: 20px 25px;
+    text-align: center;
+  }
+  .our-mission-container > img {
+    width: 340px;
+    height: 220px;
+    margin: 25px;
+  }
+  .our-mission-container > p,
+  .our-commitment-para,
+  .value-para-header {
+    font-size: 1rem;
+    margin: 10px 25px;
   }
 }

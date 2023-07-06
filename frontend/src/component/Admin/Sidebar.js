@@ -1,6 +1,6 @@
 import React from "react";
 import "./sidebar.css";
-import logo from "../../images/logo.png";
+import logo from "../../images/livolt-logo.png";
 import { Link } from "react-router-dom";
 import { TreeView, TreeItem } from "@material-ui/lab";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -12,7 +12,7 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import PeopleIcon from "@material-ui/icons/People";
 import RateReviewIcon from "@material-ui/icons/RateReview";
 
-const Sidebar = () => {
+const Hamburger = () => {
   return (
     <div className="sidebar">
       <Link to="/">
@@ -60,4 +60,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default Hamburger;

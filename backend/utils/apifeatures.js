@@ -15,6 +15,7 @@ class ApiFeatures {
       : {};
 
     this.query = this.query.find({ ...keyword });
+
     return this;
   }
 
@@ -28,6 +29,7 @@ class ApiFeatures {
     // Filter For Price and Rating
 
     let queryStr = JSON.stringify(queryCopy);
+
     queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
 
     this.query = this.query.find(JSON.parse(queryStr));

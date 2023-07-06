@@ -1,5 +1,5 @@
 import React, { useEffect, Fragment, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import "./Products.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getProduct, clearErrors } from "../../actions/productAction";
@@ -11,24 +11,27 @@ import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 import MetaData from "../layout/MetaData";
 
-
-
 const categories = [
-  "Lithium-ion",
-  "Lithium-phosphate",
-  "Solar panel",
-  "Solar inverter",
+  "Li-ion Battery",
+  "Li-phosphate Battery",
+  "Solar Panel",
+  "Solar Inverter",
   "Hybrid Inverter",
-  "Laptop"
+  "Solar Stand",
+  "Solar Wire",
+  "Charge Controller",
+  "Ongrid System",
+  "Offgrid System",
 ];
 
 const Products = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
+  const params = useParams();
   const [currentPage, setCurrentPage] = useState(1);
-  const [price, setPrice] = useState([0, 25000]);
-  const [category,setCategory] = useState("");
-  const [ratings,setRatings] = useState(0);
+  const [price, setPrice] = useState([0, 500000]);
+  const [category, setCategory] = useState("");
+  const [ratings, setRatings] = useState(0);
 
   const {
     loading,
@@ -39,7 +42,12 @@ const Products = () => {
     filteredProductCount,
   } = useSelector((state) => state.products);
 
-  const { keyword } = useParams();
+  const { keyword } = params;
+  const { HomeCategory } = params;
+
+  if (HomeCategory != undefined) {
+    setCategory(HomeCategory);
+  }
 
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
@@ -52,17 +60,18 @@ const Products = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-    dispatch(getProduct(keyword, currentPage, price,category,ratings));
-  }, [dispatch, error, alert, keyword, currentPage, price,category,ratings]);
+    dispatch(getProduct(keyword, currentPage, price, category, ratings));
+  }, [dispatch, error, alert, keyword, currentPage, price, category, ratings]);
 
   let count = filteredProductCount;
+
   return (
     <Fragment>
       {loading ? (
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title="PRODUCTS --LIVOLT" />
+          <MetaData title="Products | LiVolt" />
           <h2 className="productsHeading">Products</h2>
 
           <div className="products">
@@ -80,7 +89,7 @@ const Products = () => {
               getAriaLabel={() => "Temperature range"}
               valueLabelDisplay="auto"
               min={0}
-              max={25000}
+              max={500000}
             />
             <Typography>Category</Typography>
             <ul className="categoryBox">
@@ -96,19 +105,19 @@ const Products = () => {
             </ul>
             <fieldset>
               <Typography component="legend">Rating Above</Typography>
-              <Slider 
-               value = {ratings}
-               onChange = {(e,newRating)=>{
-                setRatings(newRating);
-               }}
-               aria-label="continuous-slider"
-               valueLabelDisplay="auto"
-               min={0}
-               max={5}
+              <Slider
+                value={ratings}
+                onChange={(e, newRating) => {
+                  setRatings(newRating);
+                }}
+                aria-label="continuous-slider"
+                valueLabelDisplay="auto"
+                min={0}
+                max={5}
               />
             </fieldset>
           </div>
-          {resultPerPage < count && (
+          {resultPerPage && (
             <div className="paginationBox">
               <Pagination
                 activePage={currentPage}
@@ -119,7 +128,7 @@ const Products = () => {
                 prevPageText="Prev"
                 firstPageText="1st"
                 lastPageText="Last"
-                itemsClass="page-item"
+                itemClass="page-item"
                 linkClass="page-link"
                 activeClass="pageItemActive"
                 activeLinkClass="pageLinkActive"

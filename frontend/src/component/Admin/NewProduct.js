@@ -30,13 +30,16 @@ const NewProduct = () => {
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = [
-    "Laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
+    "Li-ion Battery",
+    "Li-phosphate Battery",
+    "Solar Panel",
+    "Solar Inverter",
+    "Hybrid Inverter",
+    "Solar Stand",
+    "Solar Wire",
+    "Charge Controller",
+    "Ongrid System",
+    "Offgrid System",
   ];
 
   useEffect(() => {
@@ -56,6 +59,7 @@ const NewProduct = () => {
     e.preventDefault();
 
     const myForm = new FormData();
+    myForm.maxFileSize = 100 * 1024 * 1024;
 
     myForm.set("name", name);
     myForm.set("price", price);
@@ -66,6 +70,7 @@ const NewProduct = () => {
     images.forEach((image) => {
       myForm.append("images", image);
     });
+
     dispatch(createProduct(myForm));
   };
 

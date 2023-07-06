@@ -26,7 +26,7 @@ const UserOptions = ({ user }) => {
     {
       icon: (
         <ShoppingCartIcon
-          style={{ color: cartItems.length > 0 ? "tomato" : "unset" }}
+          style={{ color: cartItems.length > 0 ? "rgb(8,184,90)" : "unset" }}
         />
       ),
       name: `Cart(${cartItems.length})`,
@@ -70,6 +70,7 @@ const UserOptions = ({ user }) => {
         style={{ zIndex: "11" }}
         direction="down"
         className="speedDial"
+        sx={{ "& .MuiFab-primary": { width: 40, height: 40 } }}
         icon={
           <img
             className="speedDialIcon"
