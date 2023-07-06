@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8145a4b1.css",
+    "main.js": "/static/js/main.b3542d40.js",
+    "static/media/solar-consultation.jpg": "/static/media/solar-consultation.36c15afe92e0750f2e17.jpg",
+    "static/media/lithium_battery.png": "/static/media/lithium_battery.bb6f75662080805805cb.png",
+    "static/media/light_bulb.jpg": "/static/media/light_bulb.9e86cc2ed66499eb582e.jpg",
+    "static/media/banner.png": "/static/media/banner.d27d94d3b18765a0d795.png",
+    "static/media/solar_panel_carousel.jpg": "/static/media/solar_panel_carousel.17877ce91d22ee5f5184.jpg",
+    "static/media/Livolt_environment.png": "/static/media/Livolt_environment.df99494e8c2c693b6be0.png",
+    "static/media/Livolt_battery.jpg": "/static/media/Livolt_battery.e0a8b788f7363a1be6c9.jpg",
+    "static/media/solar_stand.png": "/static/media/solar_stand.76ecb436730bc732ccc5.png",
+    "static/media/charge_controller.png": "/static/media/charge_controller.154264a1f916a4392ad5.png",
+    "static/media/Lithium_battery_carousel.jpg": "/static/media/Lithium_battery_carousel.4785a72cee4fe05ed1d2.jpg",
+    "static/media/solar_inverter.png": "/static/media/solar_inverter.de7521250628ff48a2d2.png",
+    "static/media/solar_panel.png": "/static/media/solar_panel.e669269dc3f7839de0b8.png",
+    "static/media/solar_wire.png": "/static/media/solar_wire.9f1522dd97c35e64cdaf.png",
+    "static/media/Profile.png": "/static/media/Profile.697fdcd21f6d157b9073.png",
+    "static/media/livolt-logo.png": "/static/media/livolt-logo.4a863cdbf2e4f0502845.png",
+    "index.html": "/index.html",
+    "main.8145a4b1.css.map": "/static/css/main.8145a4b1.css.map",
+    "main.b3542d40.js.map": "/static/js/main.b3542d40.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8145a4b1.css",
+    "static/js/main.b3542d40.js"
+  ]
+}
